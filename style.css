@@ -1,0 +1,87 @@
+form {
+	display: inline-block;
+}
+button {
+	color: white;
+	background-color: #0c4e87;
+	transition: all 200ms ease-in-out;
+}
+button:hover {
+	opacity: 0.8;
+	cursor: pointer;
+}
+h2 {
+	margin-top: 20px;
+}
+h1 {
+	margin-top: 15px;
+	font-weight: 600;
+}
+.search {
+	border: 1px solid #0c4e87;
+	border-radius: 30px;
+	line-height: 2;
+}
+.container {
+	font-family: "Poppins", sans-serif;
+	color: white;
+	width: 60%;
+	margin: 50px;
+	padding: 30px 45px;
+	border: 1px solid #0c4e87;
+	border-radius: 4px;
+	background-image: linear-gradient(
+		to right top,
+		#457fb3,
+		#5e93c4,
+		#77a8d5,
+		#8fbde6,
+		#a7d2f8
+	);
+}
+.today {
+	font-size: 70px;
+}
+.day {
+	margin: 10px;
+	padding: 10px;
+	text-align: center;
+	border: 1px solid white;
+	border-radius: 4px;
+	transition: all 200ms ease-in-out;
+}
+.day:hover {
+	background-image: linear-gradient(
+		to right top,
+		#457fb3,
+		#5e93c4,
+		#77a8d5,
+		#8fbde6,
+		#a7d2f8
+	);
+}
+p .img {
+	font-size: 25px;
+}
+.degree {
+	font-size: 30px;
+	position: relative;
+	bottom: 27px;
+}
+#search-city:hover {
+	border: 1px solid white;
+}
+#fahrenheit {
+	color: white;
+	text-decoration: none;
+}
+#fahrenheit:hover {
+	text-decoration: underline;
+}
+#сelsius {
+	color: white;
+	text-decoration: none;
+}
+#сelsius:hover {
+	text-decoration: underline;
+}
