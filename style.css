@@ -85,3 +85,7 @@ p .img {
 #сelsius:hover {
 	text-decoration: underline;
 }
+#git-link {
+	text-decoration: none;
+	margin-left: 50px;
+}
