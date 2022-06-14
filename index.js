@@ -58,6 +58,7 @@ function searchCityTemperature(city) {
 }
 
 function showTemperature(response) {
+	console.log(response.data);
 	let city = document.querySelector("h1");
 	city.innerHTML = response.data.name;
 	let currentTemperature = document.querySelector("#temperature");
@@ -66,6 +67,12 @@ function showTemperature(response) {
 	currentHumidity.innerHTML = response.data.main.humidity;
 	let windSpeed = document.querySelector("#wind");
 	windSpeed.innerHTML = Math.round(response.data.wind.speed);
+	let icon = document.querySelector("#icon");
+	icon.setAttribute(
+		"src",
+		`http://openweathermap.org/img/wn/${response.data.weather[0].icon}@2x.png`
+	);
+	icon.setAttribute("alt", response.data.weather[0].description);
 }
 
 function fahrenheitTemperature(event) {
