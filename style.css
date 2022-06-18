@@ -68,23 +68,20 @@ p .img {
 	position: relative;
 	bottom: 27px;
 }
+.active {
+	text-decoration: none;
+}
 #search-city:hover {
 	border: 1px solid white;
 }
 #fahrenheit {
 	color: white;
-	text-decoration: none;
 }
-#fahrenheit:hover {
-	text-decoration: underline;
-}
+
 #сelsius {
 	color: white;
-	text-decoration: none;
 }
-#сelsius:hover {
-	text-decoration: underline;
-}
+
 #git-link {
 	text-decoration: none;
 	margin-left: 50px;

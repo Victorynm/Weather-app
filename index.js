@@ -81,15 +81,17 @@ function showTemperature(response) {
 function fahrenheitTemperature(event) {
 	event.preventDefault();
 	let temperatureElement = document.querySelector("#temperature");
-
 	temperatureElement.innerHTML = Math.round((celsiusTemperature * 9) / 5 + 32);
+	сelsius.classList.remove("active");
+	fahrenheit.classList.add("active");
 }
 
 function сelsiusTemperature(event) {
 	event.preventDefault();
 	let temperatureElement = document.querySelector("#temperature");
-
 	temperatureElement.innerHTML = celsiusTemperature;
+	сelsius.classList.add("active");
+	fahrenheit.classList.remove("active");
 }
 function showLocation(position) {
 	let apiKey = "a9c8a1ce0370b92d2bf8acab56c68686";
