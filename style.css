@@ -1,5 +1,5 @@
 form {
-	display: inline-block;
+	display: inline;
 }
 button {
 	color: white;
@@ -91,4 +91,7 @@ p .img {
 }
 #icon {
 	width: 140px;
+}
+#description {
+	text-transform: capitalize;
 }
