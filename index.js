@@ -57,6 +57,12 @@ function searchCityTemperature(city) {
 	axios.get(apiUrl).then(showTemperature);
 }
 
+function getWeatherCoordinates(coordinates) {
+	let apiKey = "a9c8a1ce0370b92d2bf8acab56c68686";
+	let apiUrl = `https://api.openweathermap.org/data/2.5/onecall?lat=${coordinates.lat}&lon=${coordinates.lon}&appid=${apiKey}&units=metric`;
+	axios.get(apiUrl).then(displayForecast);
+}
+
 function showTemperature(response) {
 	console.log(response.data);
 	let city = document.querySelector("h1");
@@ -76,6 +82,8 @@ function showTemperature(response) {
 	icon.setAttribute("alt", response.data.weather[0].description);
 	let description = document.querySelector("#description");
 	description.innerHTML = response.data.weather[0].description;
+
+	getWeatherCoordinates(response.data.coord);
 }
 
 function fahrenheitTemperature(event) {
@@ -104,6 +112,61 @@ function showLocation(position) {
 function getCurrentLocation(event) {
 	event.preventDefault();
 	navigator.geolocation.getCurrentPosition(showLocation);
+}
+
+function getForecastTime(dt) {
+	let now = new Date(dt * 1000);
+	let days = [
+		"Sunday",
+		"Monday",
+		"Tuesday",
+		"Wednesday",
+		"Thursday",
+		"Friday",
+		"Saturday",
+	];
+	let day = days[now.getDay()];
+	let date = now.getDate();
+	if (date < 10) {
+		date = `0${date}`;
+	}
+	let month = now.getMonth() + 1;
+	if (month < 10) {
+		month = `0${month}`;
+	}
+
+	return `${day}<br />${date}/${month}`;
+}
+function displayForecast(response) {
+	console.log(response.data.daily);
+
+	let forecastElement = document.querySelector(".daily-forecast");
+	let forecast = response.data.daily;
+	let forecastHTML = `<div class="row">`;
+	forecast.forEach(function (forecastDay, index) {
+		if (index < 6) {
+			forecastHTML =
+				forecastHTML +
+				`
+	            <div class="col day">
+                    <p>
+                        ${getForecastTime(forecastDay.dt)}
+						<br />     
+                        <img src="http://openweathermap.org/img/wn/${
+													forecastDay.weather[0].icon
+												}@2x.png" alt="" width = 50 >
+						<br />${Math.round(forecastDay.temp.max)}° ${Math.round(forecastDay.temp.min)}°
+                    </p>
+                </div>`;
+		}
+	});
+
+	forecastHTML = forecastHTML + `</div>`;
+	forecastElement.innerHTML = forecastHTML;
+	let todayMaxTemperature = document.querySelector("#today-max-temperature");
+	todayMaxTemperature.innerHTML = Math.round(response.data.daily[0].temp.max);
+	let todayMinTemperature = document.querySelector("#today-min-temperature");
+	todayMinTemperature.innerHTML = Math.round(response.data.daily[0].temp.min);
 }
 
 let currentButton = document.querySelector("#current-button");
