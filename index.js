@@ -43,6 +43,7 @@ function time() {
 }
 function handleSubmit(event) {
 	event.preventDefault();
+
 	let city = document.querySelector("#search-city").value;
 	if (city) {
 		searchCityTemperature(city);
@@ -82,6 +83,8 @@ function showTemperature(response) {
 	icon.setAttribute("alt", response.data.weather[0].description);
 	let description = document.querySelector("#description");
 	description.innerHTML = response.data.weather[0].description;
+	сelsius.classList.add("active");
+	fahrenheit.classList.remove("active");
 
 	getWeatherCoordinates(response.data.coord);
 }
